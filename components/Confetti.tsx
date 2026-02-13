@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback, useRef } from "react";
+import { useEffect, useCallback, useState } from "react";
 import confetti from "canvas-confetti";
 import { getRandomMessage } from "@/lib/messages";
 
@@ -10,7 +10,7 @@ type ConfettiProps = {
 };
 
 export default function Confetti({ show, onClose }: ConfettiProps) {
-  const messageRef = useRef<string>("");
+  const [message, setMessage] = useState("");
 
   const fireConfetti = useCallback(() => {
     const colors = ["#ff69b4", "#ff1493", "#ff6eb4", "#ffb6c1", "#ffc0cb"];
@@ -41,7 +41,7 @@ export default function Confetti({ show, onClose }: ConfettiProps) {
 
   useEffect(() => {
     if (show) {
-      messageRef.current = getRandomMessage();
+      setMessage(getRandomMessage());
       fireConfetti();
       const timer = setTimeout(fireConfetti, 1200);
       return () => clearTimeout(timer);
@@ -64,7 +64,7 @@ export default function Confetti({ show, onClose }: ConfettiProps) {
           Puzzle Complete!
         </h2>
         <p className="text-gray-600 text-lg leading-relaxed mb-6">
-          {messageRef.current}
+          {message}
         </p>
         <button
           onClick={onClose}
