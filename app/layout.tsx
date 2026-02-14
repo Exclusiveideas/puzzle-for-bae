@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Puzzle For Bae 💖",
-  description: "A sliding puzzle game made with love",
+  title: "Our Love Games 💖",
+  description: "Fun games made with love, just for you",
 };
 
 export default function RootLayout({
